@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  app:
+    image: oven/bun:1.0
+    container_name: metar_api
+    restart: always
+    command: sh -c "bun install && bun index.ts"
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app

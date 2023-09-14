@@ -1,4 +1,4 @@
-const server = Bun.serve({
+Bun.serve({
     port: 3000,
     development: false,
     async fetch(request) {
@@ -22,4 +22,3 @@ const server = Bun.serve({
     },
 });
 
-console.log(`Listening on localhost:${server.port}`);
