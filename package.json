@@ -1,0 +1,15 @@
+{
+  "name": "metar_api",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run --watch index.ts",
+    "debug": "bun run --watch --inspect index.ts"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
