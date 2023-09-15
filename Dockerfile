@@ -1,15 +1,17 @@
-#oven/bun:1.0
-
 FROM oven/bun:1.0
 
-COPY index.ts /app/index.ts
-COPY package.json /app/package.json
-COPY bun.lockb /app/bun.lockb
-
 WORKDIR /app
+
+# Copiar primero los archivos de dependencia
+COPY package.json bun.lockb /app/
+
+# Instalar dependencias
 RUN bun install
 
+# Luego copiar el código fuente
+COPY index.ts /app/
 
-CMD ["bun", "run", "index.ts"]
+# Exponer el puerto 3000
+EXPOSE 3000
 
-
+ENTRYPOINT ["bun", "run", "index.ts"]
