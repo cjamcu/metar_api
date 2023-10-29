@@ -17,8 +17,20 @@ Bun.serve({
         }
 
 
-        const response = await fetch(`https://beta.aviationweather.gov/cgi-bin/data/metar.php?ids=${icao}`);
-        return new Response(response.body, response);
+        const response = await fetch(`https://tgftp.nws.noaa.gov/data/observations/metar/stations/${icao}.TXT`);
+        
+        //  Get only the METAR data from the response 
+
+        if(response.body === null){
+            return new Response('ICAO code not found', {
+                status: 404,
+            });
+        }
+
+        const metar = (await response.text()).split('\n')[1];
+
+
+        return new Response(metar, response);
     },
 });
 
