@@ -3,6 +3,10 @@ import express, { Request, Response } from "express";
 const app = express();
 const port = 3000;
 
+app.get("/", (req: Request, res: Response) => {
+  return res.send("Please provide an ICAO code");
+});
+
 app.get("/:icao", async (req: Request, res: Response) => {
   const icao = req.params.icao;
   if (icao.length > 4) {
