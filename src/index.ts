@@ -1,8 +1,8 @@
+import cors from "cors";
 import express, { Request, Response } from "express";
-
 const app = express();
 const port = 3000;
-
+app.use(cors());
 app.get("/", (req: Request, res: Response) => {
   return res.send("Please provide an ICAO code");
 });
@@ -29,6 +29,7 @@ app.get("/:icao", async (req: Request, res: Response) => {
 
   return res.send(metar);
 });
+
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
